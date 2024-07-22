@@ -28,13 +28,13 @@ var init = function (window) {
             circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
             physikz.addRandomVelocity(circle, canvas, 2.5, 2.5);
             view.addChild(circle);
-            circles.push(circle);
+            circList.push(circle);
 
 
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-            for(i=0; i<100; i++){
+            for(var i=0; i<100; i++){
                 drawCircle();
             }
 
@@ -49,20 +49,17 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-            for(i=0; i<100; i++){
+            for(var i=0; i<100; i++){
 
                 physikz.updatePosition(circList[i]);
+                game.checkCirclePosition(circList[i]);
 
             }
                 
             
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
            
-           for(i=0; i<100; i++){
-
-            game.checkCirclePosition(circList[i]);
-
-        }
+           
             
             // TODO 9 : Iterate over the array
            
@@ -107,7 +104,7 @@ var init = function (window) {
         app.addUpdateable(fps);
         
         game.circle = circle;
-        game.circles = circles;
+        game.circles = circList;
         game.drawCircle = drawCircle;
         game.update = update;
         
